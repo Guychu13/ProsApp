@@ -44,6 +44,7 @@ public class Repository {
     private UserDao user;
     private MultiPlayerGameDao multiPlayerGame;
 
+    private final FirebaseDatabase database = FirebaseDatabase.getInstance();
 //    private FirebaseAuth mAuth;
 //    private FirebaseUser currentUser;
 
@@ -61,8 +62,11 @@ public class Repository {
     }
 
     private Repository(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid());
+        this.setListenerOnUserUid(FirebaseAuth.getInstance().getUid());
+    }
+
+    public void setListenerOnUserUid(String uid) {
+        DatabaseReference myRef = this.database.getReference("Pros").child("users").child(uid);
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -99,26 +103,22 @@ public class Repository {
     }
 
     public void saveUser(UserDao userDao){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid());
+        DatabaseReference myRef = this.database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid());
         myRef.setValue(userDao);
     }
 
     public void saveNewChosenSkinImageID(int newChosenSkinImageID){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid()).child("chosenSkinImageId");
+        DatabaseReference myRef = this.database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid()).child("chosenSkinImageId");
         myRef.setValue(newChosenSkinImageID);
     }
 
     public void saveNumOfWins(int numOfWins){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid()).child("numOfWins");
+        DatabaseReference myRef = this.database.getReference("Pros").child("users").child(FirebaseAuth.getInstance().getUid()).child("numOfWins");
         myRef.setValue(numOfWins);
     }
 
     public void saveMultiPlayerGame(MultiPlayerGameDao multiPlayerGameDao){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(multiPlayerGameDao.getGameCode());
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(multiPlayerGameDao.getGameCode());
         myRef.setValue(multiPlayerGameDao);
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -136,8 +136,7 @@ public class Repository {
     }
 
     public void updateCodeMultiPlayerGame(String gameCode){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode);
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode);
 
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -154,26 +153,22 @@ public class Repository {
     }
 
     public void saveP2PlayerName(String gameCode , String p2PlayerName){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("p2PlayerName");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("p2PlayerName");
         myRef.setValue(p2PlayerName);
     }
 
     public void saveP2SkinImageId(String gameCode, int p2SkinImageID){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("p2SkinImageID");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("p2SkinImageID");
         myRef.setValue(p2SkinImageID);
     }
 
     public void saveP1BitmapXPos(String gameCode, float p1BitmapXPos) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("p1BitmapXPos");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("p1BitmapXPos");
         myRef.setValue(p1BitmapXPos);
     }
 
     public void saveP2BitmapXPos(String gameCode, float p2BitmapXPos) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("p2BitmapXPos");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("p2BitmapXPos");
         myRef.setValue(p2BitmapXPos);
     }
 
@@ -186,20 +181,17 @@ public class Repository {
     }
 
     public void saveGameStarted(String gameCode, boolean gameStarted) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("gameStarted");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("gameStarted");
         myRef.setValue(gameStarted);
     }
 
     public void saveBallIsMoving(String gameCode, boolean ballIsMoving) {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("ballIsMoving");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("ballIsMoving");
         myRef.setValue(ballIsMoving);
     }
 
     public void setListenerOnBallIsMoving(String gameCode){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Pros").child("gameCodes").child(gameCode).child("ballIsMoving");
+        DatabaseReference myRef = this.database.getReference("Pros").child("gameCodes").child(gameCode).child("ballIsMoving");
         myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

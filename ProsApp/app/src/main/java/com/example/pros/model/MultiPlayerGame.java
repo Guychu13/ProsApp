@@ -157,11 +157,11 @@ public class MultiPlayerGame implements Observer {
         }
     }
 
+
     /**
-     * פעולה זו יוצרת עצם חדש של משחק מקוון ושומרת אותו בבסיס הנתונים.
-     * @param gameCode
-     * @param p1Name
-     * @param p1ChosenSkinImageId
+     * @param gameCode the game id in the db.
+     * @param p1Name the name of the player who created the lobby.
+     * @param p1ChosenSkinImageId the skin image id of the player who created the lobby.
      */
     public void createNewMultiPlayerGame(String gameCode, String p1Name, int p1ChosenSkinImageId){
         MultiPlayerGameDao newMultiPlayerGameDao = new MultiPlayerGameDao();

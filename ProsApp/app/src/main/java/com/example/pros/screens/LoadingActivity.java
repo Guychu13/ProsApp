@@ -20,8 +20,7 @@ import java.util.TimerTask;
  */
 public class LoadingActivity extends AppCompatActivity {
 
-    private SpotifyReceiver spotifyBroadcastReciever;
-    private IntentFilter filter;
+    private SpotifyReceiver spotifyBroadcastReceiver;
 
     /**
      * פעולה זו היא הפעולה הראשונה המופעלת בעת כניסה למסך. בפעולה זו מוחלות האנימציות על האיורים השונים במסך הטעינה, ומבצע המעבר אל המסך הבא.
@@ -65,22 +64,23 @@ public class LoadingActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        IntentFilter filter;
         super.onResume();
         if(!SettingsScreenActivity.musicMuted){
             startService(new Intent(getApplicationContext(), AppMusicService.class));
         }
-        spotifyBroadcastReciever = new SpotifyReceiver();
+        spotifyBroadcastReceiver = new SpotifyReceiver();
         filter = new IntentFilter();
         filter.addAction("com.spotify.music.playbackstatechanged");
         filter.addAction("com.spotify.music.metadatachanged");
         filter.addAction("com.spotify.music.queuechanged");
-        registerReceiver(spotifyBroadcastReciever, filter);
+        registerReceiver(spotifyBroadcastReceiver, filter);
     }
 
     @Override
     protected void onPause() {//אולי יש צורך להעתיק את זה לכל מסך, צריך לבדוק את זה
         super.onPause();
         stopService(new Intent(getApplicationContext(), AppMusicService.class));
-        unregisterReceiver(spotifyBroadcastReciever);
+        unregisterReceiver(spotifyBroadcastReceiver);
     }
 }

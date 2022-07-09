@@ -9,7 +9,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -53,7 +52,7 @@ public class MainScreenActivity extends AppCompatActivity implements PopupMenu.O
 
     private boolean codeExists;
 
-    private SpotifyReceiver spotifyBroadcastReciever;
+    private SpotifyReceiver spotifyBroadcastReceiver;
     private IntentFilter filter;
 
     @Override
@@ -72,19 +71,19 @@ public class MainScreenActivity extends AppCompatActivity implements PopupMenu.O
         if(!SettingsScreenActivity.musicMuted){
             startService(new Intent(getApplicationContext(), AppMusicService.class));
         }
-        spotifyBroadcastReciever = new SpotifyReceiver();
+        spotifyBroadcastReceiver = new SpotifyReceiver();
         filter = new IntentFilter();
         filter.addAction("com.spotify.music.playbackstatechanged");
         filter.addAction("com.spotify.music.metadatachanged");
         filter.addAction("com.spotify.music.queuechanged");
-        registerReceiver(spotifyBroadcastReciever, filter);
+        registerReceiver(spotifyBroadcastReceiver, filter);
     }
 
     @Override
     protected void onPause() {//אולי יש צורך להעתיק את זה לכל מסך, צריך לבדוק את זה
         super.onPause();
         stopService(new Intent(getApplicationContext(), AppMusicService.class));
-        unregisterReceiver(spotifyBroadcastReciever);
+        unregisterReceiver(spotifyBroadcastReceiver);
     }
 
     @Override

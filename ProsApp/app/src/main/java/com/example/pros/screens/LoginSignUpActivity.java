@@ -6,9 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.app.Dialog;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,9 +22,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.UploadTask;
 
 /**
  * 	מחלקה זו מייצגת את מסך הטעינה וההתחברות אל האפליקציה.
@@ -49,7 +44,7 @@ public class LoginSignUpActivity extends AppCompatActivity {
 //    private int PICK_IMAGE = 100;
 //    private Uri imageUri;
 
-    private SpotifyReceiver spotifyBroadcastReciever;
+    private SpotifyReceiver spotifyBroadcastReceiver;
     private IntentFilter filter;
 
     /**
@@ -69,20 +64,11 @@ public class LoginSignUpActivity extends AppCompatActivity {
         usernameDialogEditText = (EditText)usernameDialog.findViewById(R.id.editText_usernamePickDialog_userNameEditText);
         mAuth = FirebaseAuth.getInstance();
         currentUser = mAuth.getCurrentUser();
-//        mAuth.signOut();
-//        imageUri = null;//בשביל התנאי בדיאלוג שזה לא יהיה נל
         if (currentUser != null) {
             startActivity(new Intent(LoginSignUpActivity.this, MainScreenActivity.class));
         }
         emailEditText = findViewById(R.id.editText_loginScreen_email);
         passwordEditText = findViewById(R.id.editText_loginScreen_password);
-//        addImageButton = findViewById(R.id.imageButton_usernamePickDialog_addImage);
-//        addImageButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                openGalleryGroup();
-//            }
-//        });
     }
 
     @Override
@@ -215,18 +201,18 @@ public class LoginSignUpActivity extends AppCompatActivity {
         if(!SettingsScreenActivity.musicMuted){
             startService(new Intent(getApplicationContext(), AppMusicService.class));
         }
-        spotifyBroadcastReciever = new SpotifyReceiver();
+        spotifyBroadcastReceiver = new SpotifyReceiver();
         filter = new IntentFilter();
         filter.addAction("com.spotify.music.playbackstatechanged");
         filter.addAction("com.spotify.music.metadatachanged");
         filter.addAction("com.spotify.music.queuechanged");
-        registerReceiver(spotifyBroadcastReciever, filter);
+        registerReceiver(spotifyBroadcastReceiver, filter);
     }
 
     @Override
     protected void onPause() {//אולי יש צורך להעתיק את זה לכל מסך, צריך לבדוק את זה
         super.onPause();
         stopService(new Intent(getApplicationContext(), AppMusicService.class));
-        unregisterReceiver(spotifyBroadcastReciever);
+        unregisterReceiver(spotifyBroadcastReceiver);
     }
 }

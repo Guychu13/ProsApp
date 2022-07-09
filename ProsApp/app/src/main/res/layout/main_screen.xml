@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:layoutDirection="ltr">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontalUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVerticalLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <TextView
+        android:id="@+id/textView_mainScreen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/mainScreen_title"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp" />
+
+
+    <!--    <ImageButton-->
+    <!--        android:id="@+id/imageButton_mainScreen_createButton"-->
+    <!--        android:layout_width="129dp"-->
+    <!--        android:layout_height="51dp"-->
+    <!--        android:layout_marginTop="90dp"-->
+    <!--        android:layout_marginEnd="165dp"-->
+    <!--        android:foreground="@drawable/create_button"-->
+    <!--        android:visibility="visible"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalDown"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"-->
+    <!--        app:layout_constraintHorizontal_bias="0.504"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp"-->
+    <!--        app:srcCompat="@drawable/create_button" />-->
+
+    <ImageView
+        android:id="@+id/imageView_mainScreen_chosenSkin"
+        android:layout_width="163dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="328dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp">
+
+    </ImageView>
+    <!--        app:srcCompat="@drawable/skin_basic" />-->
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/imageButton_mainScreen_joinButton"-->
+<!--        android:layout_width="129dp"-->
+<!--        android:layout_height="51dp"-->
+<!--        android:foreground="@drawable/join_button"-->
+<!--        android:layoutDirection="ltr"-->
+<!--        android:onClick="goToJoinGameDialog"-->
+<!--        app:srcCompat="@drawable/join_button"-->
+<!--        tools:layout_editor_absoluteX="270dp"-->
+<!--        tools:layout_editor_absoluteY="129dp" />-->
+
+<!--    <ImageButton-->
+<!--        android:id="@+id/imageButton_mainScreen_createButton"-->
+<!--        android:layout_width="129dp"-->
+<!--        android:layout_height="51dp"-->
+<!--        android:foreground="@drawable/create_button"-->
+<!--        android:layoutDirection="ltr"-->
+<!--        android:onClick="goToFriendlyGameLobbyScreen"-->
+<!--        app:srcCompat="@drawable/join_button"-->
+<!--        tools:layout_editor_absoluteX="253dp"-->
+<!--        tools:layout_editor_absoluteY="223dp" />-->
+
+    <ImageButton
+        android:id="@+id/imageButton_mainScreen_playOfflineButton"
+        android:layout_width="129dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="120dp"
+        android:foreground="@drawable/play_offline_button"
+        android:layoutDirection="ltr"
+        android:onClick="goToOfflineGameScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageButton_mainScreen_duelButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_mainScreen_chosenSkin"
+        app:srcCompat="@drawable/play_offline_button" />
+
+    <ImageButton
+        android:id="@+id/imageButton_mainScreen_settingsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="517dp"
+        android:background="@color/black"
+        android:onClick="goToSettingsScreen"
+        android:src="@drawable/settings_button"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton_mainScreen_skinsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="517dp"
+        android:background="@color/black"
+        android:foreground="@drawable/skins_screen_button_image"
+        android:onClick="goToSkinsScreen"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp"
+        app:layout_constraintVertical_bias="0.50" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontalDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVerticalRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <TextView
+        android:id="@+id/textView_mainScreen_usernameGreet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/coming_soon"
+        android:text="Hey, User"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalDown"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp"
+        app:layout_constraintVertical_bias="0.017" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVerticalMiddle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <ImageView
+        android:id="@+id/imageView_mainScreen_menuThreeDots"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="10dp"
+        android:onClick="showPopup"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp"
+        app:srcCompat="@drawable/main_screen_menu" />
+
+    <ImageView
+        android:id="@+id/imageView_mainScreen_rightArrow"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:foreground="@drawable/arrow"
+        android:rotation="180"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton_mainScreen_skinsButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/imageButton_mainScreen_skinsButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_mainScreen_skinsButton" />
+
+    <ImageView
+        android:id="@+id/imageView_mainScreen_leftArrow"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:foreground="@drawable/arrow"
+        app:layout_constraintEnd_toEndOf="@+id/imageButton_mainScreen_settingsButton"
+        app:layout_constraintStart_toStartOf="@+id/imageButton_mainScreen_settingsButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_mainScreen_settingsButton" />
+
+    <ImageView
+        android:id="@+id/imageButton_mainScreen_duelButton"
+        android:layout_width="129dp"
+        android:layout_height="51dp"
+        android:foreground="@drawable/duel_button"
+        android:onClick="openDuelDialog"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_mainScreen_playOfflineButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/imageButton_mainScreen_playOfflineButton" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

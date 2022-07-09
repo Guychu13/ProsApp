@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/black"
+    android:layoutDirection="ltr">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontalUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVerticalLeft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHorizontalDown"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineVerticalRight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+
+    <ImageButton
+        android:id="@+id/imageButton_duelModesDialog_joinButton"
+        android:layout_width="129dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:foreground="@drawable/join_button"
+        android:layoutDirection="ltr"
+        android:onClick="goToJoinGameDialog"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_duelModesDialog_createButton"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/textView_duelModesDialog_splitScreen"
+        app:layout_constraintTop_toBottomOf="@+id/textView_duelModesDialog_online"
+        app:srcCompat="@drawable/join_button"></ImageButton>
+
+    <ImageButton
+        android:id="@+id/imageButton_duelModesDialog_createButton"
+        android:layout_width="129dp"
+        android:layout_height="51dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:foreground="@drawable/create_button"
+        android:layoutDirection="ltr"
+        android:onClick="goToFriendlyGameLobbyScreen"
+        app:layout_constraintBottom_toBottomOf="@+id/imageButton_duelModesDialog_joinButton"
+        app:layout_constraintEnd_toEndOf="@+id/textView_duelModesDialog_splitScreen"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imageButton_duelModesDialog_joinButton"
+        app:layout_constraintTop_toTopOf="@+id/imageButton_duelModesDialog_joinButton"
+        app:srcCompat="@drawable/join_button"></ImageButton>
+
+    <TextView
+        android:id="@+id/textView_duelModesDialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/duelModesDialog_title"
+        android:textColor="@color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView_duelModesDialog_online"
+        app:layout_constraintStart_toStartOf="@+id/textView_duelModesDialog_online"
+        app:layout_constraintTop_toTopOf="@+id/guidelineHorizontalUp" />
+
+    <TextView
+        android:id="@+id/textView_duelModesDialog_online"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/duelModesDialog_onlineModes"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton_duelModesDialog_createButton"
+        app:layout_constraintStart_toEndOf="@+id/imageButton_duelModesDialog_joinButton"
+        app:layout_constraintTop_toBottomOf="@+id/textView_duelModesDialog_title" />
+
+
+    <TextView
+        android:id="@+id/textView_duelModesDialog_splitScreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="20dp"
+        android:fontFamily="@font/coming_soon"
+        android:text="@string/duelModesDialog_splitScreen"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineVerticalRight"
+        app:layout_constraintStart_toStartOf="@+id/guidelineVerticalLeft"
+        app:layout_constraintTop_toBottomOf="@+id/imageButton_duelModesDialog_joinButton" />
+
+    <ImageButton
+        android:id="@+id/imageButton_duelModesDialog_playButton"
+        android:layout_width="129dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:foreground="@drawable/play_button"
+        android:layoutDirection="ltr"
+        android:onClick="goToSplitScreenGame"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineHorizontalDown"
+        app:layout_constraintEnd_toEndOf="@+id/textView_duelModesDialog_splitScreen"
+        app:layout_constraintStart_toStartOf="@+id/textView_duelModesDialog_splitScreen"
+        app:layout_constraintTop_toBottomOf="@+id/textView_duelModesDialog_splitScreen"
+        app:srcCompat="@drawable/join_button"></ImageButton>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
